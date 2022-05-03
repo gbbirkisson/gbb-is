@@ -1,7 +1,7 @@
 +++
 author = "Guðmundur Björn Birkisson"
 title = "Remote Wireshark Packet Capture"
-date = "2022-05-02"
+date = "2022-05-03"
 description = "Remotely analyse packets with Wireshark"
 tags = [
     "debug",
