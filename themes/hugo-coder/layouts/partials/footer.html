@@ -11,7 +11,7 @@
     ·
     {{ end }}
     {{ if (and .Site.Params.commit .GitInfo) }}
-    · <a href="{{ .Site.Params.commit }}/{{ .GitInfo.Hash }}">{{ .GitInfo.AbbreviatedHash }}</a>
+    · <a href="{{ .Site.Params.commit }}/{{ .GitInfo.Hash }}" target="_blank">{{ .GitInfo.AbbreviatedHash }}</a>
     {{ end }}
   </section>
 </footer>
