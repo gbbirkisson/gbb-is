@@ -3,13 +3,12 @@ author: "Guðmundur Björn Birkisson"
 title: "Remote Wireshark Packet Capture"
 date: "2022-05-03"
 description: "Remotely analyse packets with Wireshark"
-tags: [
-    "debug",
-    "shell",
-    "ssh",
-    "tcpdump",
-    "wireshark",
-]
+tags:
+  - debug
+  - shell
+  - ssh
+  - tcpdump
+  - wireshark
 ---
 
 From time to time you need to analyse packets on a particular server. Usually people start by capturing packets with `tcpdump` and then use `wireshark` for the analysis.
@@ -20,9 +19,9 @@ The answer is, of course you can :smile:
 
 You can even do it with a handy one-liner:
 
-> This command assumes that you have the rights to escalate your privileges to `root` on the server.
+> **NOTE:** This command assumes that you have the rights to escalate your privileges to `root` on the server.
 
-> In my case I need to run `wireshark` as `root`, so I run it with `sudo`. This might not be the case for you.
+> **NOTE:** In my case I need to run `wireshark` as `root`, so I run it with `sudo`. This might not be the case for you.
 
 ```console
 $ ssh my-server "sudo tcpdump -s 0 -U -w - -i ens3 port 9300" | sudo wireshark -k -i -
