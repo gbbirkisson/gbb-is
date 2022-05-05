@@ -5,6 +5,7 @@ date: "2022-05-03"
 description: "Remotely analyse packets with Wireshark"
 tags:
   - debug
+  - networking
   - shell
   - ssh
   - tcpdump
