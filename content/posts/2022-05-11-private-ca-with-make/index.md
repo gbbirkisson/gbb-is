@@ -24,7 +24,7 @@ There are times when you need to create your own certificate authority. This cou
 
 ## Intro
 
-I have found that using makefiles is a really nice approach to manage your CA. We of course use the [Makefile Help](../2022-05-04-makefile-help/) template to create our CA and then we end up with this nice interface:
+I have found that using makefiles is a really nice approach to manage your CA. We will of course use the [Makefile Help](../2022-05-04-makefile-help/) template to create our CA and then we end up with this nice interface:
 
 ```console
 $ make
@@ -41,7 +41,7 @@ Makefile targets:
 
 ## Setup
 
-How do accomplish this? Well we are going to create 3 Makefiles:
+How do we accomplish this? Well we are going to create 3 Makefiles:
 
 ```
 <DIR>
@@ -50,7 +50,7 @@ How do accomplish this? Well we are going to create 3 Makefiles:
 └── Makefile-cert1.mk
 ```
 
-Those definitions are explained below!
+Each makefile definition is explained below!
 
 ### Makefile
 
@@ -166,7 +166,7 @@ ${CERT_1_CERT}-print: ${CERT_1_CERT} ## Print cert for '${CERT_1_CN}'
 
 ## Usage
 
-Now that we have set everything up, we can create everything in a single command:
+Now that we have set our makefiles up, we can create everything in a single command:
 
 ```console
 $ make certs/myserver.com.cert
@@ -237,10 +237,10 @@ $ tree
 
 ## Adding certs
 
-Now if you want to add more certs, just copy the `Makefile-cert1.mk` file and search replace `CERT_1` with something else, i.e:
+Now if you want to add more certs, just copy the `Makefile-cert1.mk` file and search/replace `CERT_1` with something else, i.e:
 
 ```console
-cat Makefile-cert1.mk | sed s/CERT_1/CERT_2/g > Makefile-cert2.mk
+$ cat Makefile-cert1.mk | sed s/CERT_1/CERT_2/g > Makefile-cert2.mk
 ```
 
 Then change the files and properties at the top of the new makefile:
