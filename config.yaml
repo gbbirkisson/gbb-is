@@ -14,7 +14,7 @@ params:
   author: "Guðmundur Björn Birkisson"
   description: "This is a space where I write about things that I find interesting and useful"
   keywords: "blog,developer,personal"
-  info: ["Developer & DevOps Engineer"]
+  info: ["Developer & SRE"]
   avatarURL: "images/avatar.jpg"
   dateFormat: "2006-01-02"
   since: 2022
