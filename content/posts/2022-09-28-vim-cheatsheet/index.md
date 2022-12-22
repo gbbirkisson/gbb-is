@@ -6,80 +6,61 @@ description: "My cheat sheet for vim"
 tags:
 - shell
 - vim
+- cheatsheet
 ---
 
 This is my vim cheat sheet.
 
 <!-- vim-markdown-toc GFM -->
 
-* [Basics](#basics)
-	* [The verbs](#the-verbs)
-	* [The nouns (motions)](#the-nouns-motions)
-	* [The nouns (text objects)](#the-nouns-text-objects)
-	* [The nouns (parameterized text objects)](#the-nouns-parameterized-text-objects)
-* [Commands](#commands)
-* [Cursor](#cursor)
-* [Plugin commands](#plugin-commands)
+- [Basics, Verbs, Movements](#basics-verbs-movements)
+- [Add, Copy, Paste, Cut, Delete](#add-copy-paste-cut-delete)
+- [Change, Replace, Undo, Repeat](#change-replace-undo-repeat)
+- [Find, Save, Quit](#find-save-quit)
+- [Advanced](#advanced)
 
 <!-- vim-markdown-toc -->
 
-## Basics
+## Basics, Verbs, Movements
 
-Syntax of commands is broken into **verbs** + **nouns**. So for example:
+Syntax of commands is broken into **number** + **verbs** + **nouns**. So for example:
 
-`d` for delete
-`w` for word
+`2` for two <br>
+`d` for delete <br>
+`w` for word <br>
 
-### The verbs
-- `d`: Delete
-- `c`: Change
-- `<` or `>`: Indent
-- `v`: Visual select
-- `y`: Yank (copy)
-- `gc`: Toggle comments (commentary plugin)
+| Basics | Verbs | Movements |
+| --- | --- | --- |
+| `h`<br>`j` move<br>`k` around<br>`l` | `d` delete<br>`c` change<br>`<` `>` indent<br>`v` visual select<br>`y` yank<br> | `w` `W` forward 1 word __*__<br>`b` `B` backwards 1 word __*__<br>`0` `$` front and end of line<br>`H` `M` `L` top, middle, bottom of screen<br>`gg` to beginning of doc<br>`G` to end of doc<br>`ctrl`+`u` 1/2 page up<br>`ctrl`+`d` 1/2 down<br>`%` to matching brace, bracket, etc... |
 
-### The nouns (motions)
-- `h`, `j`, `k`, `l`: Left, Down, Up, Right
-- `w`: Forward by a word
-- `b`: Back by a word
-- `3j`: Down 3 lines
-- `$`: Start of line
-- `0` (zero): End of line
-- `gg`: Beginning of file
-- `G`: End of file
+__*__ the latter (`W` and `B`) use whitespace as boundaries.
 
-### The nouns (text objects)
-- `iw`: Inner word (works inside word)
-- `it`: Inner tag (inside html)
-- `i"`: Inner quotes (`i'` also works)
-- `ip`: Inner paragraph
-- `as`: A sentance
+## Add, Copy, Paste, Cut, Delete
 
-### The nouns (parameterized text objects)
-- `f`: Find next character (`F` to go backwards)
-- `t`: Upto but not including (`T` to go backwards)
-- `/`: Search (i.e. `c/stuff`)
+| Add | Copy/Paste | Cut/Delete |
+| --- | --- | --- |
+| `i` insert<br>`I` insert start of line<br>`a` insert after cursor<br>`A` insert end of line<br>`o` new line below<br>`O` new line above | `yl` yank char<br>`yw` yank word<br>`yy` yank line<br>`Y` yank line<br>`p` paste afer current line<br>`P` paste before current line| `dl` delete char<br>`dw` delete word<br>`dd` delete line<br> `x` delete char (same as `dl`)<br>`X` delete char before cursor |
 
-## Commands
+Note that deletions also act as cut.
 
-- `.`: Rerun last command
-- `u`: Undo
-- `ctrl` + `r`: Redo
-- `p`: Paste
-- `A`: Insert at end of line
-- `o`: Insert line below
-- `O`: Insert line above
+## Change, Replace, Undo, Repeat
 
-## Cursor
+| Change | Replace | Undo/Repeat |
+| --- | --- | --- |
+| `cl` change char<br>`cw` change word<br>`cc` change line<br>`C` change from cursor to end of line<br>`sl` change char<br>`S` change line | `r` replace single char<br>`R` replace until stop typing<br>`~` change char case | `u` undo<br>`U` undo current line<br>`ctrl`+`r` redo<br>`.` repeat command |
 
-- `zt`: Move cursor to top
-- `zz`: Move cursor to middle
-- `zb`: Move cursor to buttom
-- `ctrl` + `d`: Move cursor 1/2 page down
-- `ctrl` + `u`: Move cursor 1/2 page up 
+## Find, Save, Quit
 
-## Plugin commands
+| Find | Save/Quit |
+| --- | --- |
+| `/` search forward<br>`?` search backwards<br>`n` next hit<br>`N` prev hit | `:w` save<br>`:q` quit<br>`ZZ` save and quit |
 
-- `:Rg`: Search with ripgrep
-- `ctrl` + `p`: Open file working dir
-- `ctrl` + `j`: Switch buffer (close buffer with `:bd`)
+## Advanced
+
+| Text objects | Cursor Position |
+| --- | --- |
+| `iw` inner word (select whole word)<br>`it` inner tag (select inside tag)<br>`i"` inner quotes<br>`i'` inner quotes<br>`ip` inner paragraph | `zt` scroll so cursor is on top<br>`zz` scroll so cursor is in middle<br>`zb` scroll so cursor is on bottom |
+
+Run bash command on all lines: `:% ! grep mysearch`
+
+Delete lines sed style: `:g!/pattern/d`
