@@ -7,6 +7,7 @@ tags:
   - bash
   - shell
   - template
+  - cheatsheet
 ---
 
 The motivation here is to remember bash script best practices, and also to create user friendly scripts. There is a very nice [gist](https://gist.github.com/vncsna/64825d5609c146e80de8b1fd623011ca) that goes into detail many of the things I mention here. This [article](http://redsymbol.net/articles/unofficial-bash-strict-mode/) is also very helpful. There are 2 examples here:
