@@ -10,6 +10,12 @@ pygmentsCodeFencesGuessSyntax: true
 enableEmoji: true
 enableGitInfo: true
 
+# This is for the <br> tags in the vim post
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
 params:
   author: "Guðmundur Björn Birkisson"
   description: "This is a space where I write about things that I find interesting and useful"
