@@ -23,6 +23,7 @@ This is my vim cheat sheet 🚀
   - [Replace/Delete](#replacedelete)
   - [Bash](#bash)
 - [Other](#other)
+  - [Multicursor edit](#multicursor-edit)
   - [Clipboard](#clipboard)
   - [Cursor Position](#cursor-position)
   - [Misc](#misc)
@@ -46,8 +47,6 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 | `h`<br> `j` move<br> `k` around<br> `l` | `d` delete<br> `c` change<br> `<` `>` indent<br> `v` `V` visual select __*__<br> `y` yank<br> | `w` `W` forward 1 word __**__<br> `b` `B` backwards 1 word __**__<br> `0` `$` front and end of line<br> `gg` `G` cursor to beginning/end of doc<br> `<c-u>` `<c-d>` ½ page up/down<br> `%` to matching brace, bracket, etc...<br> `*` `#` to next/previous instance of the same word |
 
 __*__ the latter (`V`) selects whole lines. <br> __**__ the latter (`W` and `B`) use whitespace as boundaries.
-
-> **Note**: The combo `<c-?>` stands for `ctrl+?`.
 
 ### Add, Copy, Paste, Cut, Delete
 
@@ -83,7 +82,7 @@ __*__ the latter (`V`) selects whole lines. <br> __**__ the latter (`W` and `B`)
 
 | Command |
 | --- |
-| `:s/<old>/<new>` replace old with new <br> `:g/<pattern>/d` delete line matching pattern |
+| `:s/<old>/<new>` replace old with new (only selected lines) <br> `:%s/<old>/<new>/g` same as above but globally <br> `:s/\(\d\+\)/number \1` using regex capture groups <br> `:s(\d+)/number \1` using regex capture groups (vscode vim plugin) <br> `:g/<pattern>/d` delete line matching pattern | 
 
 ### Bash
 
@@ -94,6 +93,16 @@ __*__ the latter (`V`) selects whole lines. <br> __**__ the latter (`W` and `B`)
 > **Note**:  The file you have opened is `%` in this example!
 
 ## Other
+
+### Multicursor edit
+
+You can kind of do multi cursor edit by using visual block mode. For example commenting out 4 lines would be:
+- `0` go to begining of line
+- `<c-v>` enter visual block mode
+- `3j` also select next 3 lines
+- `I` insert at begining
+- `//` add comment
+- `<ESC>` exit insert mode
 
 ### Clipboard
 
@@ -113,7 +122,7 @@ __*__ the latter (`V`) selects whole lines. <br> __**__ the latter (`W` and `B`)
 
 | Misc | 
 | --- |
-| `=` indent selection, i.e. `=ap`, `=G` |
+| `=` auto indent selection, i.e. `=ap`, `=G` |
 
 ## Plugins
 
