@@ -22,6 +22,7 @@ This is my vim cheat sheet 🚀
   - [Find, Save, Quit](#find-save-quit)
   - [Replace/Delete](#replacedelete)
   - [Bash](#bash)
+- [Macros](#macros)
 - [Other](#other)
   - [Multicursor edit](#multicursor-edit)
   - [Clipboard](#clipboard)
@@ -46,7 +47,7 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 | --- | --- | --- |
 | `h`<br> `j` move<br> `k` around<br> `l` | `d` delete<br> `c` change<br> `<` `>` indent<br> `v` `V` visual select __*__<br> `y` yank<br> | `w` `W` forward 1 word __**__<br> `b` `B` backwards 1 word __**__<br> `0` `$` front and end of line<br> `gg` `G` cursor to beginning/end of doc<br> `<c-u>` `<c-d>` ½ page up/down<br> `%` to matching brace, bracket, etc...<br> `*` `#` to next/previous instance of the same word |
 
-__*__ the latter (`V`) selects whole lines. <br> __**__ the latter (`W` and `B`) use whitespace as boundaries.
+> __*__ : the latter (`V`) selects whole lines. <br> __**__ : the latter (`W` and `B`) use whitespace as boundaries.
 
 ### Add, Copy, Paste, Cut, Delete
 
@@ -82,7 +83,9 @@ __*__ the latter (`V`) selects whole lines. <br> __**__ the latter (`W` and `B`)
 
 | Command |
 | --- |
-| `:s/<old>/<new>` replace old with new (only selected lines) <br> `:%s/<old>/<new>/g` same as above but globally <br> `:s/\(\d\+\)/number \1` using regex capture groups <br> `:s(\d+)/number \1` using regex capture groups (vscode vim plugin) <br> `:g/<pattern>/d` delete line matching pattern | 
+| `:s/<old>/<new>` replace old with new on selected lines <br> `:%s/<old>/<new>/g` replace old with new globally <br> `:s/\(\d\+\)/number \1` using regex capture groups __*__ <br> `:g/<pattern>/d` delete line matching pattern | 
+
+> __*__ : This command becomes `:s(\d+)/number \1` if using vscode vim plugin. That is because you need to use javascript regex.
 
 ### Bash
 
@@ -91,6 +94,14 @@ __*__ the latter (`V`) selects whole lines. <br> __**__ the latter (`W` and `B`)
 | `:!grep "find this string" %` |
 
 > **Note**:  The file you have opened is `%` in this example!
+
+## Macros
+
+| Create | Apply | View |
+| --- | --- | --- |
+| `qr` start recording __*__ <br> _do anything when recording_ <br> `q` in normal mode to finish | `@r` apply macro | `:reg r` look at __r__ register <br> `:reg` look at all registers |
+
+> __*__ : You can use any letter `a` to `z` instead of `r`, these are just register names!
 
 ## Other
 
