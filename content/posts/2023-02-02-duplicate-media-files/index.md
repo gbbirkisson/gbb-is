@@ -9,9 +9,9 @@ tags:
   - benchmark
 ---
 
-I have been sorting through thousands of photos these days. I found out that I had quite a bit of duplicates laying around. No need to waste storage space on that! A perfect challenge to solve using the standard tools available in a regular linux distro.
+I have been sorting through thousands of photos these days. I found out that I had quite a bit of duplicates laying around. No need to waste storage space on that! A perfect challenge to solve using the standard tools available in any regular linux distro.
 
-Oh, and also, by dumb luck I managed to find duplicates that I would have never found otherwise 🤷
+Oh, and also, by dumb luck I managed to find duplicate files that I would have never found without doing this exercise 🤷
 
 - [TL;DR](#tldr)
 - [First attempt](#first-attempt)
@@ -109,9 +109,9 @@ $ find . ! -empty -type f -exec \
     uniq -w32 -dD
 ```
 
-Nice, now we have this fast, reliable way of finding duplicates! But its still pretty slow! How many bytes should we read in while doing the *first pass* to make this as optimal as possible?
+Nice, now we have this fast, reliable way of finding duplicates! But I think it could be faster! How many bytes should we read in while doing the *first pass* to make this as optimal as possible?
 
-I guess that depends a lot on the type of files you are working with, but in this case we working with images and videos. Lets create a script that parameterizes the number of bytes we read:
+I guess that depends a lot on the type of files you are working with, and in this case we working with images and videos. Lets create a script that parameterizes the number of bytes we read:
 
 ```bash
 #!/usr/bin/env bash
@@ -229,7 +229,7 @@ $ diff <(cat /tmp/dup_first_pass | cut -c 35-) <(cat /tmp/dup_second_pass | cut 
 ...
 ```
 
-**THESE ARE DUPLICATES** 🤨 Don't know how that happened, but they have the same `exif` data and look exactly the same. But still have different `md5` hash. I just managed to create a better way of finding them. This was pure dumb luck 🙃 Nice!
+**THESE ARE DUPLICATES** 🤨 Don't know how that happened, but they have the same `exif` data and look exactly the same. But still have different `md5` hash. I just managed to create a way to find these strange duplicates. This was pure dumb luck 🙃 Nice!
 
 I manually went over all those false-false positives, cleaned up and ran the scripts again.
 
