@@ -20,7 +20,7 @@ params:
   author: "Guðmundur Björn Birkisson"
   description: "This is a space where I write about things that I find interesting and useful"
   keywords: "blog,developer,personal"
-  info: ["Developer & SRE"]
+  info: ["Software Engineer"]
   avatarURL: "images/avatar.jpg"
   dateFormat: "2006-01-02"
   since: 2022
@@ -31,8 +31,8 @@ params:
   # "auto" (use preference set by browser)
   # "dark" (dark background, light foreground)
   # "light" (light background, dark foreground) (default)
-  colorScheme: "light"
-  hideColorSchemeToggle: true
+  colorScheme: "auto"
+  hideColorSchemeToggle: false
   # Series see also post count
   maxSeeAlsoItems: 5
   customCSS: []
