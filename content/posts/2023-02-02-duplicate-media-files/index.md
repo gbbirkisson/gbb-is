@@ -9,7 +9,7 @@ tags:
   - benchmark
 ---
 
-I have been sorting through thousands of photos these days. I found out that I had quite a bit of duplicates laying around. No need to waste storage space on that! A perfect challenge to solve using the standard tools available in any regular linux distro.
+I have been sorting through thousands of photos these days. I found out that I had quite a bit of duplicates laying around. No need to waste storage space on that! This is a perfect challenge to solve using the standard tools available in any regular linux distro.
 
 Oh, and also, by dumb luck I managed to find duplicate files that I would have never found without doing this exercise 🤷
 
@@ -18,22 +18,29 @@ Oh, and also, by dumb luck I managed to find duplicate files that I would have n
 - [Second attempt](#second-attempt)
 - [Third attempt](#third-attempt)
 - [Fourth attempt](#fourth-attempt)
-
+- [Fifth attempt (Update)](#fifth-attempt-update)
 
 ### TL;DR
 
-Now I use this command to find duplicate media files:
+Now I use these commands to find duplicate media files:
 
 ```bash
+# This one takes 11 minutes on 250gb
 $ find . ! -empty -type f -exec \
     sh -c "dd if='{}' bs=65536 count=1 2>/dev/null | md5sum | sed s%-%'{}'%g" \; |\
     sort |\
     uniq -w32 -dD 
+
+# This one take 2.5 minutes on 250gb
+$ fdfind -tf -e cr2 -e jpg -e jpeg -e mov -e mp4 -e png -x \
+    sh -c "dd if='{}' bs=65536 count=1 2>/dev/null | md5sum | sed s%-%'{}'%g" |\
+    sort |\
+    uniq -w32 -dD
 ```
 
-This command takes **11 minutes** to process **250gb** of data on a RaspberryPi 🚀
+The latter command takes **2.5 minutes** to process **250gb** of data on a RaspberryPi 🚀
 
-Also [hyperfine](https://github.com/sharkdp/hyperfine) is awesome 🔥
+Also [hyperfine](https://github.com/sharkdp/hyperfine) and [fd](https://github.com/sharkdp/fd) are awesome 🔥
 
 ### First attempt
 
@@ -53,9 +60,9 @@ Easy! Find all files, calculate the `md5` hash for each one, sort and print out 
 
 ### Second attempt
 
-Well, the first attempt is pretty good. Very simple, but its so slow! Can we make it faster? Well we are reading every file from disk! The whole file! And we dont even care about the `md5` hash, we just care if the files are the same or not!
+Well, the first attempt is pretty good. Very simple, but it's so slow! Can we make it faster? Well we are reading every file from disk! The whole file! And we dont even care about the `md5` hash, we just care if the files are the same or not!
 
-Can we maybe just read first, lets say `1kb` of the file and calculate the hash of those bytes?
+Can we maybe just read the first, lets say `1kb` of the file and calculate the hash of those bytes?
 
 ```bash
 #!/usr/bin/env bash
@@ -100,7 +107,9 @@ So the second attempt is way faster than the first one. But it has a problem! It
 To fix that we could just pipe the positives matches again into `md5sum`. Basically do a *second pass* on our duplicates:
 
 ```bash
-$ find . ! -empty -type f -exec \
+#!/usr/bin/env bash
+
+find . ! -empty -type f -exec \
     sh -c "dd if='{}' bs=1024 count=1 2>/dev/null | md5sum | sed s%-%'{}'%g" \; |\
     sort |\
     uniq -w32 -dD |\
@@ -233,7 +242,7 @@ $ diff <(cat /tmp/dup_first_pass | cut -c 35-) <(cat /tmp/dup_second_pass | cut 
 
 I manually went over all those false-false positives, cleaned up and ran the scripts again.
 
-```bash
+```console
 $ hyperfine --runs 1 'g_dup_4.sh'
 Benchmark 1: g_dup_4.sh
   Time (abs ≡):        615.955 s               [User: 213.727 s, System: 269.289 s]
@@ -255,3 +264,56 @@ $ wc -l /tmp/dup_first_pass /tmp/dup_second_pass
 ```
 
 Ahhh, nice! Everything is good in the world again. Except, I have some cleanup to do on my server!
+
+### Fifth attempt (Update)
+
+I shared this with my collegues and there was a suggestion to use [fd](https://github.com/sharkdp/fd) instead of `find`. So lets give it a go!
+
+```bash
+#!/usr/bin/env bash
+# g_dup_6.sh
+
+fdfind -HI -tf -x \
+    sh -c "dd if='{}' bs=${1:-65536} count=1 2>/dev/null | md5sum | sed s%-%'{}'%g" |\
+    sort |\
+    uniq -w32 -dD
+```
+
+We are including the `-HI` flags to look in hidden folders like `find` does by default. But we are also using the `-x` flag to run the hashing in parallel!
+
+```console
+# Working with the same data as before!
+$ du -h -d 0 .
+249G	.
+
+$ hyperfine --runs 1 'g_dup_2.sh 65536' 'g_dup_6.sh 65536'
+Benchmark 1: g_dup_2.sh 65536
+  Time (abs ≡):        673.321 s               [User: 215.444 s, System: 267.730 s]
+
+Benchmark 2: g_dup_6.sh 65536
+  Time (abs ≡):        182.496 s               [User: 216.008 s, System: 246.254 s]
+
+Summary
+  'g_dup_6.sh 65536' ran
+    3.69 times faster than 'g_dup_2.sh 65536'
+```
+
+What! That only took **3 minutes** 😮 Lets pull out all the stops and see the absolute minimum amount of time we can get down to:
+
+```bash
+#!/usr/bin/env bash
+# g_dup_7.sh
+
+fdfind -tf -e cr2 -e jpg -e jpeg -e mov -e mp4 -e png -x \
+    sh -c "dd if='{}' bs=${1:-65536} count=1 2>/dev/null | md5sum | sed s%-%'{}'%g" |\
+    sort |\
+    uniq -w32 -dD
+```
+
+```console
+$ hyperfine --runs 1 'g_dup_7.sh 65536'
+Benchmark 1: g_dup_7.sh 65536
+  Time (abs ≡):        150.410 s               [User: 178.517 s, System: 197.493 s]
+```
+
+That is amazing! Only **2.5 minutes** processing time 🤯
