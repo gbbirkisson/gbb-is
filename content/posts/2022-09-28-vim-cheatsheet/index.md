@@ -13,22 +13,20 @@ This is my vim cheat sheet 🚀
 
 <!-- vim-markdown-toc GFM -->
 
-- [Basics](#basics)
-  - [Basic verbs and movements](#basic-verbs-and-movements)
-  - [Add, Copy, Paste, Cut, Delete](#add-copy-paste-cut-delete)
-  - [Change, Replace, Undo, Repeat](#change-replace-undo-repeat)
-  - [More Nouns](#more-nouns)
-- [Commands](#commands)
-  - [Find, Save, Quit](#find-save-quit)
-  - [Replace/Delete](#replacedelete)
-  - [Bash](#bash)
-- [Macros](#macros)
-- [Other](#other)
-  - [Multicursor edit](#multicursor-edit)
-  - [Clipboard](#clipboard)
-  - [Cursor Position](#cursor-position)
-  - [Misc](#misc)
-- [Plugins](#plugins)
+* [Basics](#basics)
+  * [Basic verbs and movements](#basic-verbs-and-movements)
+  * [Add, Copy, Paste, Cut, Delete](#add-copy-paste-cut-delete)
+  * [Change, Replace, Undo, Repeat](#change-replace-undo-repeat)
+  * [More Nouns](#more-nouns)
+* [Commands](#commands)
+  * [Find, Save, Quit](#find-save-quit)
+  * [Replace/Delete](#replacedelete)
+  * [Bash](#bash)
+* [Macros](#macros)
+* [Clipboard & Buffers](#clipboard--buffers)
+* [Cursor](#cursor)
+* [Misc](#misc)
+* [Plugins](#plugins)
 
 <!-- vim-markdown-toc -->
 
@@ -103,40 +101,41 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 
 > __*__ : You can use any letter `a` to `z` instead of `r`, these are just register names!
 
-## Other
+## Clipboard & Buffers
 
-### Multicursor edit
+| Clipboard | Buffers |
+| --- | --- |
+| `"+p` paste from clipboard __*__ <br> `"+yy` yank line to clipboard __*__ |`:ls` list buffers <br> `:bd <nr>` close buffer (`<nr>` is optional) |
 
-You can kind of do multi cursor edit by using visual block mode. For example commenting out 4 lines would be:
-- `0` go to begining of line
-- `<c-v>` enter visual block mode
-- `3j` also select next 3 lines
-- `I` insert at begining
-- `//` add comment
-- `<ESC>` exit insert mode
+> __*__: The clipboard is the `+` register. To access a register you start with `"`.
 
-### Clipboard
+## Cursor
 
-| Clipboard |
-| --- |
-| `"+p` paste from clipboard <br> `"+yy` yank line to clipboard |
+| Multicursor edit | Cursor Position |
+| --- | --- |
+| e.g. commenting out 4 lines would be: <br><br> `0` go to begining of line <br> `<c-v>` enter visual block mode <br> `3j` also select next 3 lines <br> `I` insert at begining <br> `//` add comment <br> `<ESC>` exit insert mode | `H` `M` `L` move cursor to top/middle/bottom of screen <br> `zt` `zz` `zb` scroll so cursor is on top/middle/bottom | 
 
-> **Note**: The clipboard is the `+` register. To access a register you start with `"`.
+## Misc
 
-### Cursor Position
-
-| Cursor Position |
-| --- |
-| `H` `M` `L` move cursor to top/middle/bottom of screen <br> `zt` `zz` `zb` scroll so cursor is on top/middle/bottom | 
-
-### Misc
-
-| Misc | 
-| --- |
-| `=` auto indent selection, i.e. `=ap`, `=G` |
+| Netrw | Misc |
+| --- | --- |
+| `:Ex` open netrw <br> `%` create file in netrw | `:so` source open file | 
 
 ## Plugins
 
-| Plugin | Command |
-| --- | --- |
-| [nvim-comment](https://github.com/terrortylor/nvim-comment) | `gc<motion>` comment out selection |
+Kickstart your nvim configuration with [kickstart](https://github.com/nvim-lua/kickstart.nvim).
+
+| Commands |
+| --- |
+| `:Telescope keymaps` search in keymaps <br> `:PackerSync` install packer plugins <br> `:GenTocGFM` generate markdown toc <br> `:Mason` list LSPs (`i` to install) <br>
+
+| Navigation |
+| --- |
+| `<leader>sf` search files <br> `<leader>sg` grep files <br> `gd` go to definition __*__ <br> `gr` go to references __*__ |
+
+> __*__ : Select up and down with `<c-p>` and `<c-n>`
+
+| Code |
+| --- |
+| `gc<motion>` comment out selection <br> `=` auto indent selection, i.e. `=ap`, `=G` |
+
