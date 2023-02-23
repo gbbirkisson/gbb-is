@@ -43,9 +43,9 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 
 | Basics | Verbs | Nouns / Movements |
 | --- | --- | --- |
-| `h`<br> `j` move<br> `k` around<br> `l` | `d` delete<br> `c` change<br> `<` `>` indent<br> `v` `V` visual select __*__<br> `y` yank<br> | `w` `W` forward 1 word __**__<br> `e` `E` to last character in current word __**__ <br> `b` `B` backwards 1 word __**__<br> `0` `$` front and end of line<br> `gg` `G` cursor to beginning/end of doc<br> `<c-u>` `<c-d>` ½ page up/down<br> `%` to matching brace, bracket, etc...<br> `*` `#` to next/previous instance of the same word |
+| `h`<br> `j` move<br> `k` around<br> `l` | `d` delete<br> `c` change<br> `<` `>` indent<br> `v` `V` visual select __*__<br> `y` yank<br> | `w` `W` forward 1 word __**__<br> `e` `E` to last character in current word __**__ <br> `b` `B` backwards 1 word __**__<br> `0` `$` front and end of line<br> `f<?>` `F<?>` go to next/prev char __***__ <br> `gg` `G` cursor to beginning/end of doc<br> `<c-u>` `<c-d>` ½ page up/down<br> `%` to matching brace, bracket, etc...<br> `*` `#` to next/previous instance of the same word |
 
-> __*__ : the latter (`V`) selects whole lines. <br> __**__ : the latter (`W`, `B`, `E`) use whitespace as boundaries.
+> __*__ : the latter (`V`) selects whole lines. <br> __**__ : the latter (`W`, `B`, `E`) use whitespace as boundaries. <br> ___***___ : `<?>` can be any character
 
 ### Add, Copy, Paste, Cut, Delete
 
@@ -105,9 +105,10 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 
 | Clipboard | Buffers |
 | --- | --- |
-| `"+p` paste from clipboard __*__ <br> `"+yy` yank line to clipboard __*__ |`:ls` list buffers <br> `:bd <nr>` close buffer (`<nr>` is optional) |
+| `"+p` paste from clipboard __*__ <br> `"+yy` yank line to clipboard __*__ |`:ls` list buffers <br> `:b <?>` switch buffer __**__ <br> `:bd <?>` close buffer __**__ |
 
-> __*__: The clipboard is the `+` register. To access a register you start with `"`.
+> __*__: The clipboard is the `+` register. To access a register you start with `"`. <br>
+> __**__: `<?>` is optional and can be a number or part of name.
 
 ## Cursor
 
