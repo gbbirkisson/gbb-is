@@ -25,6 +25,7 @@ This is my vim cheat sheet 🚀
 * [Macros](#macros)
 * [Clipboard & Buffers](#clipboard--buffers)
 * [Cursor](#cursor)
+* [Windows](#windows)
 * [Misc](#misc)
 * [Plugins](#plugins)
 
@@ -114,7 +115,13 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 
 | Multicursor edit | Cursor Position |
 | --- | --- |
-| e.g. commenting out 4 lines would be: <br><br> `0` go to begining of line <br> `<c-v>` enter visual block mode <br> `3j` also select next 3 lines <br> `I` insert at begining <br> `//` add comment <br> `<ESC>` exit insert mode | `H` `M` `L` move cursor to top/middle/bottom of screen <br> `zt` `zz` `zb` scroll so cursor is on top/middle/bottom | 
+| e.g. commenting out 4 lines would be: <br><br> `0` go to begining of line <br> `<c-v>` enter visual block mode <br> `3j` also select next 3 lines <br> `I` insert at begining <br> `//` add comment <br> `<ESC>` exit insert mode | `H` `M` `L` move cursor to top/middle/bottom of screen <br> `zt` `zz` `zb` scroll so cursor is on top/middle/bottom |
+
+## Windows
+
+| Create | Manipulate | Navigate |
+| --- | --- | --- |
+| `<c-w>s` split (horizontally) <br> `<c-w>v` split vertically <br> `<c-w>o` close others <br> `<c-w>c` close | `<c-w>H` <br> `<c-w>J` move window <br> `<c-w>K` around <br> `<c-w>L` <br> <br> `<c-w>x` swap positions <br> | `<c-w>h` <br> `<c-w>j` move cursor <br> `<c-w>k` around windows <br> `<c-w>l` <br> <br> `<c-w>w` move to next <br> | 
 
 ## Misc
 
