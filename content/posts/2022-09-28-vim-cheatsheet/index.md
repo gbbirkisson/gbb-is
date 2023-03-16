@@ -46,7 +46,7 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 | --- | --- | --- |
 | `h`<br> `j` move<br> `k` around<br> `l` | `d` delete<br> `c` change<br> `<` `>` indent<br> `v` `V` visual select __*__<br> `y` yank<br> | `w` `W` forward 1 word __**__<br> `e` `E` to last character in current word __**__ <br> `b` `B` backwards 1 word __**__<br> `0` `$` front and end of line<br> `f<?>` `F<?>` go on top of next/prev `<?>` __***__ <br> `t<?>` `T<?>` go to next/prev `<?>` __***__ <br> `gg` `G` cursor to beginning/end of doc<br> `<c-u>` `<c-d>` ½ page up/down<br> `%` to matching brace, bracket, etc...<br> `*` `#` to next/previous instance of the same word |
 
-> __*__ : the latter (`V`) selects whole lines. <br> __**__ : the latter (`W`, `B`, `E`) use whitespace as boundaries. <br> ___***___ : `<?>` can be any character
+> __*__ : the latter (`V`) selects whole lines. <br> __*__ : `u` `U` to lower/upper case selection in visual mode. <br> __*__ : `o` in visual mode will move the cursor from beginning to end. <br> __**__ : the latter (`W`, `B`, `E`) use whitespace as boundaries. <br> ___***___ : `<?>` can be any character.
 
 ### Add, Copy, Paste, Cut, Delete
 
@@ -66,9 +66,11 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 
 | Nouns / Movements |
 | --- |
-| `iw` inner word (select whole word)<br>  `it` inner tag (select inside tag) <br>`ip` inner paragraph <br>`i"` `i'` inner quotes |
+| `iw` inner word (select whole word)<br>  `it` inner tag (select inside tag) <br>`ip` inner paragraph <br>`i"` `i'` inner quotes <br> `a{` brackets and everything inside |
 
-> **Note**: Use `a` instead of `i` in these examples to include trailing whitespaces.
+> **Note**: Use `a` instead of `i` in these examples to include whitespaces or surrounding symbol.
+
+> **Note**: Doing these outside selected pair will jump to next one. For example doing `vi(` outside a `()` pair will jump to the next `(` and select everything inside those brackets. Doing `va(` will include the brackets.
 
 ## Commands
 
@@ -127,7 +129,7 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 
 | Netrw | Misc |
 | --- | --- |
-| `:Ex` open netrw <br> `%` create file in netrw | `:so` source open file | 
+| `:Ex` open netrw <br> `%` create file in netrw | `:so` source open file <br> `<c-a>` increment number | 
 
 ## Plugins
 
@@ -141,9 +143,8 @@ Kickstart your nvim configuration with [kickstart](https://github.com/nvim-lua/k
 | --- |
 | `<leader>sf` search files <br> `<leader>sg` grep files <br> `gd` go to definition __*__ <br> `gr` go to references __*__ |
 
-> __*__ : Select up and down with `<c-p>` and `<c-n>`
+> __*__ : Select up and down with `<c-p>` and `<c-n>`.
 
 | Code |
 | --- |
-| `gc<motion>` comment out selection <br> `=` auto indent selection, i.e. `=ap`, `=G` |
-
+| `gc<motion>` comment out selection <br> `=` auto indent selection, i.e. `=ap`, `=G` <br> `K` Display symbol info  |
