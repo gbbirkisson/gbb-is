@@ -141,10 +141,12 @@ Kickstart your nvim configuration with [kickstart](https://github.com/nvim-lua/k
 
 | Navigation |
 | --- |
-| `<leader>sf` search files <br> `<leader>sg` grep files <br> `gd` go to definition __*__ <br> `gr` go to references __*__ |
+| `<leader>sf` search files <br> `<leader>sg` grep files <br> `s` `S` Leap forward/backward <br> `gs` Leap to other windows |
 
-> __*__ : Select up and down with `<c-p>` and `<c-n>`.
+> **Note**: Leap commands come from the [Leap plugin](https://github.com/ggandor/leap.nvim).
 
 | Code |
 | --- |
-| `gc<motion>` comment out selection <br> `=` auto indent selection, i.e. `=ap`, `=G` <br> `K` Display symbol info  |
+| `gd` go to definition __*__ <br> `gr` go to references __*__ <br> `gc<motion>` comment out selection <br> `=` auto indent selection, i.e. `=ap`, `=G` <br> `K` Display symbol info  |
+
+> __*__ : Select up and down with `<c-p>` and `<c-n>`.
