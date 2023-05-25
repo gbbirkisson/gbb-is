@@ -8,5 +8,5 @@ This is the source for my [private website](https://gbb.is) where I publish my n
 ## Testing locally
 
 ```console
-$ hugo serve
+$ make serve
 ```
