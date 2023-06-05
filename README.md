@@ -3,7 +3,11 @@
 
 This is the source for my [private website](https://gbb.is) where I publish my notes. The website is powered by [hugo](https://gohugo.io/).
 
-- [Testing locally](#testing-locally)
+<!-- vim-markdown-toc GFM -->
+
+* [Testing locally](#testing-locally)
+
+<!-- vim-markdown-toc -->
 
 ## Testing locally
 
