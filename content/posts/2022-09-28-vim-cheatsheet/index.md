@@ -14,20 +14,21 @@ This is my vim cheat sheet 🚀
 <!-- vim-markdown-toc GFM -->
 
 * [Basics](#basics)
-  * [Basic verbs and movements](#basic-verbs-and-movements)
-  * [Add, Copy, Paste, Cut, Delete](#add-copy-paste-cut-delete)
-  * [Change, Replace, Undo, Repeat](#change-replace-undo-repeat)
-  * [More Nouns](#more-nouns)
+    * [Basic verbs and movements](#basic-verbs-and-movements)
+    * [Add, Copy, Paste, Cut, Delete](#add-copy-paste-cut-delete)
+    * [Change, Replace, Undo, Repeat](#change-replace-undo-repeat)
+    * [More Nouns](#more-nouns)
 * [Commands](#commands)
-  * [Find, Save, Quit](#find-save-quit)
-  * [Replace/Delete](#replacedelete)
-  * [Bash](#bash)
+    * [Find, Save, Quit](#find-save-quit)
+    * [Replace/Delete](#replacedelete)
+    * [Bash](#bash)
 * [Macros](#macros)
 * [Clipboard & Buffers](#clipboard--buffers)
 * [Cursor](#cursor)
 * [Windows](#windows)
 * [Misc](#misc)
 * [Plugins](#plugins)
+* [Quick lists](#quick-lists)
 
 <!-- vim-markdown-toc -->
 
@@ -52,7 +53,7 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 
 | Add | Copy/Paste | Cut/Delete |
 | --- | --- | --- |
-| `i` insert<br> `I` insert start of line<br>`a` insert after cursor<br>`A` insert end of line<br>`o` insert on new line below<br>`O` insert on new line above | `yl` yank char<br>`yw` yank word<br>`yy` `Y` yank line<br> `p` paste afer current line<br>`P` paste before current line| `dl` delete char<br>`dw` delete word<br>`dd` delete line<br> `x` delete char (same as `dl`)<br>`X` delete char before cursor |
+| `i` insert<br> `I` insert start of line<br>`a` insert after cursor<br>`A` insert end of line<br>`o` insert on new line below<br>`O` insert on new line above | `yl` yank char<br>`yw` yank word<br>`yy` `Y` yank line<br> `p` paste after current line<br>`P` paste before current line| `dl` delete char<br>`dw` delete word<br>`dd` delete line<br> `x` delete char (same as `dl`)<br>`X` delete char before cursor |
 
 > **Note**: Deletions always work like cut, that is, deleted object is put into a register so that it can be pasted later.
 
@@ -84,7 +85,7 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 
 | Command |
 | --- |
-| `:s/<old>/<new>` replace old with new on selected lines <br> `:%s/<old>/<new>/g` replace old with new globally <br> `:s/\(\d\+\)/number \1` using regex capture groups __*__ <br> `:g/<pattern>/d` delete line matching pattern | 
+| `:s/<old>/<new>` replace old with new on selected lines <br> `:%s/<old>/<new>/g` replace old with new globally <br> `:s/\(\d\+\)/number \1` using regex capture groups __*__ <br> `:g/<pattern>/d` delete line matching pattern |
 
 > __*__ : This command becomes `:s(\d+)/number \1` if using vscode vim plugin. That is because you need to use javascript regex.
 
@@ -117,19 +118,19 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 
 | Multicursor edit | Cursor Position |
 | --- | --- |
-| e.g. commenting out 4 lines would be: <br><br> `0` go to begining of line <br> `<c-v>` enter visual block mode <br> `3j` also select next 3 lines <br> `I` insert at begining <br> `//` add comment <br> `<ESC>` exit insert mode | `H` `M` `L` move cursor to top/middle/bottom of screen <br> `zt` `zz` `zb` scroll so cursor is on top/middle/bottom |
+| e.g. commenting out 4 lines would be: <br><br> `0` go to beginning of line <br> `<c-v>` enter visual block mode <br> `3j` also select next 3 lines <br> `I` insert at beginning <br> `//` add comment <br> `<ESC>` exit insert mode | `H` `M` `L` move cursor to top/middle/bottom of screen <br> `zt` `zz` `zb` scroll so cursor is on top/middle/bottom |
 
 ## Windows
 
 | Create | Manipulate | Navigate |
 | --- | --- | --- |
-| `<c-w>s` split (horizontally) <br> `<c-w>v` split vertically <br> `<c-w>o` close others <br> `<c-w>c` close | `<c-w>H` <br> `<c-w>J` move window <br> `<c-w>K` around <br> `<c-w>L` <br> <br> `<c-w>x` swap positions <br> | `<c-w>h` <br> `<c-w>j` move cursor <br> `<c-w>k` around windows <br> `<c-w>l` <br> <br> `<c-w>w` move to next <br> | 
+| `<c-w>s` split (horizontally) <br> `<c-w>v` split vertically <br> `<c-w>o` close others <br> `<c-w>c` close | `<c-w>H` <br> `<c-w>J` move window <br> `<c-w>K` around <br> `<c-w>L` <br> <br> `<c-w>x` swap positions <br> | `<c-w>h` <br> `<c-w>j` move cursor <br> `<c-w>k` around windows <br> `<c-w>l` <br> <br> `<c-w>w` move to next <br> |
 
 ## Misc
 
 | Netrw | Misc |
 | --- | --- |
-| `:Ex` open netrw <br> `%` create file in netrw | `:so` source open file <br> `<c-a>` increment number | 
+| `:Ex` open netrw <br> `%` create file in netrw | `:so` source open file <br> `<c-a>` increment number |
 
 ## Plugins
 
@@ -150,3 +151,11 @@ Kickstart your nvim configuration with [kickstart](https://github.com/nvim-lua/k
 | `gd` go to definition __*__ <br> `gr` go to references __*__ <br> `gc<motion>` comment out selection <br> `=` auto indent selection, i.e. `=ap`, `=G` <br> `K` Display symbol info  |
 
 > __*__ : Select up and down with `<c-p>` and `<c-n>`.
+
+## Quick lists
+
+Quick lists are useful when searching for a word in your project, and get a list of all the files containing that word.
+
+You can open up quick list of all the files in your project containing `foo` by opening up telescope, searching for `foo` and pressing `<c-q>`.
+
+Then replace `foo` with bar by running `:cdo s/foo/bar/ | update`. Close all buffers opened by this command by running `:cfdo bd`.
