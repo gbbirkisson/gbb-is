@@ -14,7 +14,8 @@ This is my vim cheat sheet 🚀
 <!-- vim-markdown-toc GFM -->
 
 * [Basics](#basics)
-    * [Basic verbs and movements](#basic-verbs-and-movements)
+    * [Basic verbs](#basic-verbs)
+    * [Basic Nouns (movements)](#basic-nouns-movements)
     * [Add, Copy, Paste, Cut, Delete](#add-copy-paste-cut-delete)
     * [Change, Replace, Undo, Repeat](#change-replace-undo-repeat)
     * [More Nouns](#more-nouns)
@@ -34,20 +35,27 @@ This is my vim cheat sheet 🚀
 
 ## Basics
 
-### Basic verbs and movements
-
 Syntax of commands is broken into **number** + **verbs** + **nouns**. So for example `2dw` means, delete two words:
 
 `2` for two <br>
 `d` for delete <br>
 `w` for word <br>
 
+### Basic verbs
 
-| Basics | Verbs | Nouns / Movements |
-| --- | --- | --- |
-| `h`<br> `j` move<br> `k` around<br> `l` | `d` delete<br> `c` change<br> `<` `>` indent<br> `v` `V` visual select __*__<br> `y` yank<br> | `w` `W` forward 1 word __**__<br> `e` `E` to last character in current word __**__ <br> `b` `B` backwards 1 word __**__<br> `0` `$` front and end of line<br> `f<?>` `F<?>` go on top of next/prev `<?>` __***__ <br> `t<?>` `T<?>` go to next/prev `<?>` __***__ <br> `gg` `G` cursor to beginning/end of doc<br> `<c-u>` `<c-d>` ½ page up/down<br> `%` to matching brace, bracket, etc...<br> `*` `#` to next/previous instance of the same word |
+| Basics | Verbs |
+| --- | --- |
+| `h`<br> `j` move<br> `k` around<br> `l` | `d` delete<br> `c` change<br> `<` `>` indent<br> `v` `V` visual select __*__<br> `y` yank<br> |
 
-> __*__ : the latter (`V`) selects whole lines. <br> __*__ : `u` `U` to lower/upper case selection in visual mode. <br> __*__ : `o` in visual mode will move the cursor from beginning to end. <br> __**__ : the latter (`W`, `B`, `E`) use whitespace as boundaries. <br> ___***___ : `<?>` can be any character.
+> __*__ : the latter (`V`) selects whole lines. <br> __*__ : `u` `U` to lower/upper case selection in visual mode. <br> __*__ : `o` in visual mode will move the cursor from beginning to end.
+
+### Basic Nouns (movements)
+
+| Horizontal Movements | Vertical Movements |
+| --- | --- |
+| `w` `W` forward 1 word __*__<br> `b` `B` backwards 1 word __*__<br> `e` `E` to last character in current word __*__ <br> `ge` `gE` to end of previous word __*__<br> `0` `$` front and end of line<br> `^` first non-whitespace char in line <br> `%` to matching brace, bracket, etc... | `gg` `G` beginning/end of doc<br> `{` `}` up/down 1 paragraph<br> `<c-u>` `<c-d>` up/down ½ page <br> `*` `#` to next/previous instance of the same word <br> `f<?>` `F<?>` go on top of next/prev `<?>` __**__ <br> `t<?>` `T<?>` go to next/prev `<?>` __**__ <br> `;` `,` next/previous go to |
+
+> __*__ : the latter (`W`, `B`, `E`, `gE`) use whitespace as boundaries. <br> ___**___ : `<?>` can be any character.
 
 ### Add, Copy, Paste, Cut, Delete
 
@@ -85,9 +93,7 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 
 | Command |
 | --- |
-| `:s/<old>/<new>` replace old with new on selected lines <br> `:%s/<old>/<new>/g` replace old with new globally <br> `:s/\(\d\+\)/number \1` using regex capture groups __*__ <br> `:g/<pattern>/d` delete line matching pattern |
-
-> __*__ : This command becomes `:s(\d+)/number \1` if using vscode vim plugin. That is because you need to use javascript regex.
+| `:s/<old>/<new>` replace old with new on selected lines <br> `:%s/<old>/<new>/g` replace old with new globally <br> `:s/\(\d\+\)/number \1` using regex capture groups <br> `:g/<pattern>/d` delete line matching pattern |
 
 ### Bash
 
@@ -138,13 +144,13 @@ Kickstart your nvim configuration with [kickstart](https://github.com/nvim-lua/k
 
 | Commands |
 | --- |
-| `:Telescope keymaps` search in keymaps <br> `:PackerSync` install packer plugins <br> `:GenTocGFM` generate markdown toc <br> `:Mason` list LSPs (`i` to install) <br>
+| `:Telescope keymaps` search in keymaps <br> `:GenTocGFM` generate markdown toc <br> `:Mason` list tools (`i` to install) <br>
 
 | Navigation |
 | --- |
-| `<leader>sf` search files <br> `<leader>sg` grep files <br> `s` `S` Leap forward/backward <br> `gs` Leap to other windows |
+| `<leader>sf` search files <br> `<leader>sg` grep files <br> `s` jump forward/backward/to other windows |
 
-> **Note**: Leap commands come from the [Leap plugin](https://github.com/ggandor/leap.nvim).
+> **Note**: Jump commands come from the [Flash plugin](https://github.com/folke/flash.nvim).
 
 | Code |
 | --- |

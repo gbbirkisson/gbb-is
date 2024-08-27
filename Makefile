@@ -11,6 +11,7 @@ _deps:
 .PHONY:	serve
 serve: _deps ## Serve site locally
 	$(info $(M) Serving website)
+	$(Q) xdg-open http://localhost:1313/
 	$(Q) hugo serve
 
 help: ## Show help
