@@ -93,7 +93,7 @@ Syntax of commands is broken into **number** + **verbs** + **nouns**. So for exa
 
 | Command |
 | --- |
-| `:s/<old>/<new>` replace old with new on selected lines <br> `:%s/<old>/<new>/g` replace old with new globally <br> `:s/\(\d\+\)/number \1` using regex capture groups <br> `:g/<pattern>/d` delete line matching pattern |
+| `:s/<old>/<new>` replace old with new on selected lines <br> `:%s/<old>/<new>/g` replace old with new globally <br> `:%s/<old>/<new>/gc` replace old with new with confirmation <br> `:s/\(\d\+\)/number \1` using regex capture groups <br> `:g/<pattern>/d` delete line matching pattern |
 
 ### Bash
 
