@@ -11,8 +11,8 @@ _deps:
 .PHONY:	serve
 serve: _deps ## Serve site locally
 	$(info $(M) Serving website)
-	$(Q) xdg-open http://localhost:1313/
-	$(Q) hugo serve
+	$(Q) xdg-open http://localhost:1313/ &>/dev/null
+	$(Q) hugo server
 
 help: ## Show help
 	$(info $(M) Makefile targets:)

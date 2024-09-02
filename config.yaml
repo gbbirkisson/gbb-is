@@ -13,6 +13,8 @@ enableGitInfo: true
 
 # This is for the <br> tags in the vim post
 markup:
+  highlight:
+    style: nord
   goldmark:
     renderer:
       unsafe: true
