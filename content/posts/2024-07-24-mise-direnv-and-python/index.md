@@ -1,29 +1,27 @@
 ---
 author: "Guðmundur Björn Birkisson"
-title: "Mise, Direnv and Poetry"
+title: "Mise, Direnv and Python"
 date: "2024-07-24"
-description: "Use mise, direnv and poetry to manage your dependencies"
+description: "Use mise, direnv to manage your python projects"
 tags:
 - shell
 - development
 - python
 ---
 
-Both [direnv](https://direnv.net/) and [mise](https://mise.jdx.dev/) are tools that hardly need
-any introduction. If they do not ring any bells I highly recommend you read up on them. They are
-great at managing dependencies and general configuration for your projects. There are some
-caveats though that you need to be aware of when using them together. In this post I am going to
-show how I use these tools to manage python dependencies with [uv](https://docs.astral.sh/uv/),
-[poetry](https://python-poetry.org/) and plain old
-[pip](https://pip.pypa.io/en/stable/installation/).
+Both [direnv](https://direnv.net/) and [mise](https://mise.jdx.dev/) are tools that hardly need any introduction. If they do not ring any bells
+I highly recommend you read up on them. They are great at managing dependencies and general
+configuration for your projects. There are some caveats though that you need to be aware of when
+using them together. In this post I am going to show how I use these tools to manage python
+dependencies with [uv](https://docs.astral.sh/uv/), [poetry](https://python-poetry.org/) and plain old [pip](https://pip.pypa.io/en/stable/installation/).
 
 <!-- vim-markdown-toc GFM -->
 
 * [Configuring dotenv](#configuring-dotenv)
-     * [use_mise.sh](#use_misesh)
-     * [layout_uv.sh](#layout_uvsh)
-     * [layout_poetry.sh](#layout_poetrysh)
-     * [layout_pip.sh](#layout_pipsh)
+    * [use_mise.sh](#use_misesh)
+    * [layout_uv.sh](#layout_uvsh)
+    * [layout_poetry.sh](#layout_poetrysh)
+    * [layout_pip.sh](#layout_pipsh)
 * [Project with uv](#project-with-uv)
 * [Projects with poetry or pip](#projects-with-poetry-or-pip)
 
@@ -37,8 +35,7 @@ these two corresponding files in the `$HOME/.config/direnv/lib` directory.
 
 ### use_mise.sh
 
-> Note that this is only needed if you are actually using the `.tool-versions` file in your
-> project.
+> Note that this is only needed if you are actually using the `.tool-versions` file in your project.
 
 This script ensures that the `mise` path is correctly set in `direnv`. It also prints out any
 tools that are currently missing. It is important that this command is always the first command

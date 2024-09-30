@@ -11,10 +11,10 @@ pygmentsCodeFencesGuessSyntax: true
 enableEmoji: true
 enableGitInfo: true
 
-# This is for the <br> tags in the vim post
 markup:
   highlight:
     style: nord
+  # This is for the <br> tags in the vim post
   goldmark:
     renderer:
       unsafe: true
